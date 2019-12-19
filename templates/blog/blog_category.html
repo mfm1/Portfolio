@@ -1,0 +1,16 @@
+{% extends "port/main.html" %}
+{% load static %}
+
+{% block content %}
+<div class="col-md-8 offset-md-2" style="margin-top: 20px;">
+    {% for category in categories %}
+        <h3>{{ category.name }}</h3>
+
+    {% endfor %}
+    {% for p in post %}
+        {% for category in p.categories.all %}
+            <h3>{{ category.name }}</h3>
+        {% endfor %}
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "port/main.html" %}
+{% load static %}
+
+{% block content %}
+<div class="col-md-8 offset-md-2" style="margin-top: 20px;">
+    {% for category in categories %}
+        <h1>{{ category.name }}</h1>
+    {% endfor %}
+</div>
+{% endblock %}

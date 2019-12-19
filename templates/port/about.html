@@ -1,0 +1,16 @@
+{% extends 'port/main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-md-8 offset-md-2">
+<div class="row" style="margin-top: 50px; ">
+  <div>
+    <img style ="border-radius: 50%; margin-bottom: 10px ;" src="{{ about.image.url| safe }}" height="200px" width="200px" alt="profile picture">
+    <h4> Michael Mayowa</h4>
+  </div>
+  <div style="margin-left: 30px; ">
+    {{ about.about | safe }}
+  </div>
+</div>
+</div>
+{% endblock %}

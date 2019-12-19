@@ -1,0 +1,29 @@
+{% extends "port/main.html" %}
+{% load static %}
+
+{% block content %}
+<div class="col-md-8 offset-md-2" style="margin-top: 20px;">
+<h1><strong>Tutorials</strong></h1>
+<hr>
+{% for post in posts %}
+<div class="container" style="margin-bottom: 30px;">
+    <h3>{{ post.title }}</h3>
+    <small>
+        <p>
+        Created On: {{ post.created_on.date }} |&nbsp;
+        Category:
+        {% for category in post.categories.all %}
+            <a href="{% url 'tutorial:category' category.name %}" style="color: #FC9C27;">{{ category.name}}</a>&nbsp;
+        {% endfor %}
+        </p>
+    </small>
+    <div>
+    <p>{{ post.body | slice:":200" }}...</p>
+    <a href="{% url 'tutorial:details' post.pk %}" class="btn btn-primary" style="background-color: #FC9C27; border-color: #FC9C27;">Read More</a>
+    <hr>
+    </div>
+
+</div>
+{% endfor %}
+</div>
+{% endblock %}

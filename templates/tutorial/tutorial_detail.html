@@ -1,0 +1,48 @@
+{% extends "port/main.html" %}
+{% load static %}
+
+{% block content %}
+<div class="col-md-8 offset-md-2" style="margin-top: 20px;">
+    <div class ="container">
+    <h1>{{ post.title }}</h1>
+    <hr> 
+    <small>
+        {{ post.created_on.date }}|&nbsp;
+        Category:
+        {% for category in post.categories.all %}
+            <a href="{% url 'tutorial:category' category.name %} " style="color: #FC9C27;">{{ category.name }}</a>|&nbsp;
+        {% endfor %}
+    </small>
+    </div>
+    <div>
+    <p>{{ post.body }}</p>
+    </div>
+    <div class="row">
+      
+    </div>
+    <div class= "container">
+    <h1>Leave A Comment:</h1>
+    <form action="/tutorial/{{post.pk}}/" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-primary" style="background-color: #FC9C27; border-color: #FC9C27;">Submit</button>
+    </form>
+    </div>
+
+    <h1>Comments: </h1>
+    {% for comment in comments %}
+        <h3>{{ comment.author }}</h3>
+        <small>
+            {{ comment.created_on.date }}
+        </small>
+        <p> {{ comment.body }}</p>
+        <hr>
+    {% endfor %}
+    <div class="row">
+      <a href="{% url 'tutorial:details' post.pk %}" style="color: #FC9C27;"> Back To Top</a>
+      <a href="{% url 'tutorial:home' %}" style="color: #FC9C27;">Tutorials</a>
+    </div>
+
+</div>
+
+{% endblock %}

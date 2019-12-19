@@ -1,0 +1,26 @@
+{% extends "port/main.html" %}
+{% load static %}
+
+{% block content %}
+ {% load static %}
+ <div class="col-md-8 offset-md-2" style="margin-top: 20px;">
+   <h1> Welcome to mfm's blog</h1>
+   <hr>
+   {% for content in contents %}
+   <div class="container" style="margin-bottom: 30;">
+   <h3>{{ content.title }}</a></h3>
+   <small>
+     {{content.created_on.date }} |&nbsp;
+     Category: 
+     {% for category in content.categories.all %}
+     <a href="{% url 'blog:category' category.name %}" style="color: #FC9C27;">{{ category.name }}</a>&nbsp;
+     {% endfor %}
+   </small>
+   <p> {{ content.body | slice:":400" }}... </p>
+    <a href="{% url 'blog:details' content.pk %}" class="btn btn-primary" style="background-color: #FC9C27; border-color: #FC9C27; ">Read More</a>
+   <hr>
+   </div>
+   {% endfor %}
+ </div>
+
+{% endblock %}

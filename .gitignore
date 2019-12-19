@@ -16,7 +16,7 @@ media
 /static
 *static/
 static
-templates/
+
 *portenv/
 portenv/*
 portenv/

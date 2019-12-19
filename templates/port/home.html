@@ -1,0 +1,24 @@
+{% extends "port/main.html" %}
+{% load static %}
+{% block content %}
+<div style="background-image: url('{{ MEDIA_ROOT }}{{ image.bg_image.url }}')">
+</div>
+<div class="row" style="margin-top: 50px;">
+{% for project in projects %}
+<div class="card mb-3 hoverable" style="max-width: 540px; margin-left: 30px; ">
+<div class="row no-gutters">
+  <img src="{{project.image.url }}" class="img-fluid" alt="{{ project.title }}">
+  <div class="col-md-8 ">
+  <div class="card-body" >
+    <h5 class="card-title">{{ project.title}}</h5>
+    <p class="card-text">{{project.description}}</p>
+    <a href="{% url 'port:project_detail' project.pk %}" style="background-color: #FC9C27; border-color: #FC9C27;" class="btn btn-primary">READ MORE</a>
+  </div>
+  </div>
+</div>
+</div>
+{% endfor %}
+</div>
+
+
+{% endblock %}
