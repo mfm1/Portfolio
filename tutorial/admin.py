@@ -1,12 +1,26 @@
 from django.contrib import admin
-from django_summernote.admin import SummernoteModelAdmin
 from .models import Post, Category, Comments
+from tinymce.widgets import TinyMCE
+from django.db import models
 
 # Register your models here.
-class PostAdmin(SummernoteModelAdmin):
+"""class PostAdmin(SummernoteModelAdmin):
     summernote_fields = "__all__"
 
 class CategoryAdmin(SummernoteModelAdmin):
     summernote_fields = "__all__"
+    """
+class PostAdmin(admin.ModelAdmin):
+    """Overides normal text input field to an html text input field"""
+    formfield_overrides = {
+        models.TextField: {"widget": TinyMCE()},
+    }
+
+class CategoryAdmin(admin.ModelAdmin):
+    """Overides normal text input field to an html text input field"""
+    formfield_overrides = {
+        models.TextField: {"widget": TinyMCE()},
+    }
+
 admin.site.register(Post, PostAdmin)
 admin.site.register(Category, CategoryAdmin)

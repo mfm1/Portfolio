@@ -24,7 +24,7 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = MEDIA_DIR
 
-STATICFILESURL = STATIC_DIR
+STATICFILES_DIRS = [STATIC_DIR,]
 
 
 
@@ -52,8 +52,8 @@ INSTALLED_APPS = [
     # My App
     'port',
     'blog',
+    'tinymce',
     'tutorial',
-    'django_summernote',
     'django.contrib.staticfiles',
 ]
 
@@ -137,3 +137,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TINYMCE_SPELLCHECKER = True
+# TINYMCE_COMPRESSOR = True
+TINYMCE_DEFAULT_CONFIG = {
+    'theme':'advanced',
+    'plugins':'table, spellchecker, paste, searchreplace',
+    'menubar':'edit',
+    'toolbar':  "styleselect |undo redo | bold italic | alignleft aligncenter alignright | link image media codesample code",
+    'theme_advanced_buttons1':'bold, paste, attach, italic, underline, bullist, numlist, link, unlink, styleselect, fontsizeselect',
+    'width':'100%',
+    'height':'300',
+    'valid_styles':'font-weight, font-style, text-decoration',
+    'fontsize_default':'24pt',
+
+    'plugins ': 'advlist autolink link image lists charmap print preview',
+    
+}
