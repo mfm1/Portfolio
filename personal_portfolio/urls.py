@@ -20,12 +20,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('port/', include('port.urls')),
+    path('', include('port.urls')),
     path('blog/', include('blog.urls')),
     path('tutorial/', include('tutorial.urls')),
     path('tinymce/', include('tinymce.urls')),
     path('admin/', admin.site.urls),
 ]
-urlpatterns += static(settings.STATIC_URL, document_root=os.path.join(settings.BASE_DIR, 'static'))
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
