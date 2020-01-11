@@ -7,7 +7,7 @@ class Projects(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     technology = models.CharField(max_length=50)
-    image = models.ImageField(upload_to="media/")
+    image = models.ImageField(upload_to="static/")
 
     class Meta:
         verbose_name_plural = "Projects"
@@ -17,7 +17,7 @@ class Projects(models.Model):
 
 class BackgroundImage(models.Model):
     """Homepage background image"""
-    bg_image = models.ImageField(upload_to="bg images")
+    bg_image = models.ImageField(upload_to="static/")
 
     class Mwta:
         verbose_name_plural = "Background Images"
@@ -25,7 +25,7 @@ class BackgroundImage(models.Model):
 class AboutMe(models.Model):
     title = models.CharField(max_length=200)
     about = models.TextField()
-    image = models.ImageField(upload_to='media/')
+    image = models.ImageField(upload_to='static/')
 
     class Meta:
         verbose_name_plural = "About Me"

@@ -17,14 +17,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Creating paths for static, media and templates folders.
 TEMPLATE_DIR =os.path.join(BASE_DIR, 'templates')
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 
 #Craeting media url and root for media folder.
-MEDIA_URL = '/media/'
-MEDIA_ROOT = MEDIA_DIR
 
-STATICFILES_DIRS = [STATIC_DIR,]
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media")
+
 
 
 
@@ -137,6 +136,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
 
 TINYMCE_SPELLCHECKER = True
 # TINYMCE_COMPRESSOR = True
